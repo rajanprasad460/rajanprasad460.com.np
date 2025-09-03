@@ -1,9 +1,527 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Welcome</title>
-  </head>
-  <body>
-    <h1>Hello from Rajan 🚀</h1>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Rajan Prasad | Mechanical Engineering Researcher</title>
+    <style>
+        :root {
+            --primary-color: #1a4b8c;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .timeline-subtitle {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-details {
+            margin-top: 0.5rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .skill-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        
+        .publication-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-venue {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .award-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reference-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .reference-name {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .reference-title {
+            font-style: italic;
+            margin-bottom: 0.3rem;
+        }
+        
+        .reference-contact {
+            color: var(--light-text);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
+            
+            .profile-img {
+                margin-right: 2rem;
+                margin-bottom: 0;
+            }
+            
+            .header-text {
+                flex: 1;
+            }
+            
+            .contact-info {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">RP</div>
+                <div class="header-text">
+                    <h1>Rajan Prasad</h1>
+                    <div class="title">PhD in Mechanical Engineering | Researcher in Rehabilitation Robotics</div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Khalifa University, Abu Dhabi (UAE)</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📞</span>
+                            <span>+971-501240069, +977-9848305168</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <span>rajanprasad460@hotmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am a Post Doctoral Fellow at Khalifa University with a PhD in Mechanical Engineering. My research focuses on developing innovative bio-robotic assistive exoskeletons for stroke patient rehabilitation and studying the influence of biofeedback on reducing mental stress. I have extensive experience in dynamics, control systems, and rehabilitation robotics.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education & Training</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2024 - Ongoing</div>
+                <div class="timeline-title">Post Doctoral Fellow</div>
+                <div class="timeline-subtitle">Department of Mechanical and Nuclear Engineering, Khalifa University, UAE</div>
+                <div class="timeline-details">
+                    <p>Focus area: "Underwater hybrid manipulator: soft robotic arm for support and manipulation"</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2023 - 2024</div>
+                <div class="timeline-title">Post Doctoral Fellow, Medical Sciences</div>
+                <div class="timeline-subtitle">Khalifa University, UAE</div>
+                <div class="timeline-details">
+                    <p>Focus area: "Influence of Biofeedback on reducing mental stress"</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2019 - 2023</div>
+                <div class="timeline-title">PhD in Mechanical Engineering (GPA: 3.97)</div>
+                <div class="timeline-subtitle">Khalifa University, UAE</div>
+                <div class="timeline-details">
+                    <p>Thesis: "Development of Innovative Bio robotic Assistive Exoskeletons for Stroke Patients Rehabilitation"</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2017 - 2019</div>
+                <div class="timeline-title">Master in Mechanical Engineering (Grade A, 85%)</div>
+                <div class="timeline-subtitle">Beijing Institute of Technology, China</div>
+                <div class="timeline-details">
+                    <p>Thesis: "Real-time torque vectoring control of an off-road unmanned ground vehicle with multi-complex nonlinear constraints"</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2012 - 2016</div>
+                <div class="timeline-title">Bachelor in Mechanical Engineering (First division, 79.65%)</div>
+                <div class="timeline-subtitle">Institute of Engineering, Western Region Campus, Pokhara, Nepal</div>
+                <div class="timeline-details">
+                    <p>Topper of BME/069 Batch</p>
+                    <p>Final Year Project: "Design and Development of Reaper 'Mechanical Hauss'"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Competencies</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li>Bhojpuri (Mother tongue)</li>
+                        <li>Nepali (Mother tongue)</li>
+                        <li>Hindi</li>
+                        <li>English (IELTS 7 Band)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Design Software</h3>
+                    <ul class="skill-list">
+                        <li>CATIA</li>
+                        <li>PTC CREO</li>
+                        <li>Auto-CAD</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Analysis Software</h3>
+                    <ul class="skill-list">
+                        <li>ADAMS</li>
+                        <li>ABAQUS</li>
+                        <li>MATLAB/Simulink</li>
+                        <li>Python (basic)</li>
+                        <li>AnyBody</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Other Software</h3>
+                    <ul class="skill-list">
+                        <li>MS Office</li>
+                        <li>Visio</li>
+                        <li>CAN calibration software</li>
+                        <li>C Language</li>
+                        <li>Pisnoop for OpenECU</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <h2>Publications</h2>
+            
+            <h3>Journal Articles</h3>
+            <div class="publication-item">
+                <div class="pub-authors">Prasad R., El-Rich M., Awad M.I., Khalaf K.</div>
+                <div class="pub-title">Simulation of Stroke Gait Impairment Correction Using a Cable Driven Lower Limb Rehabilitation Exoskeleton (C-LREX)</div>
+                <div class="pub-venue">Wearable Technologies, 2025</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1017/wtc.2025.10013" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., El-Rich, M., Awad, M. I., Agrawal, S. K. & Khalaf, K.</div>
+                <div class="pub-title">Muscle-inspired bi-planar cable routing: a novel framework for designing cable driven lower limb rehabilitation exoskeletons (C-LREX)</div>
+                <div class="pub-venue">Scientific Reports, 14, 5158, 2024</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1038/s41598-024-51583-w" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <!-- More publications would be listed here -->
+            
+            <h3>Conference Papers</h3>
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., Rosyid A., Renda F., El-Khasawneh B.</div>
+                <div class="pub-title">Cable Driven Elephant Trunk-Inspired Robot: Analytical Derivatives and Computational Insights</div>
+                <div class="pub-venue">6th International Conference on Artificial Intelligence, Robotics, and Control (AIRC 2025)</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1109/AIRC64931.2025.11077512" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <!-- More conference papers would be listed here -->
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="container">
+            <h2>Honors & Awards</h2>
+            
+            <div class="awards-grid">
+                <div class="award-item">
+                    <h3>Distinguished International Student Award</h3>
+                    <p>Beijing Institute of Technology, China (2017-2018)</p>
+                </div>
+                
+                <div class="award-item">
+                    <h3>Second Prize, Rocket Competition</h3>
+                    <p>Beijing Institute of Technology, China (2018)</p>
+                </div>
+                
+                <div class="award-item">
+                    <h3>Chinese Government Scholarship (CSC)</h3>
+                    <p>For master's study</p>
+                </div>
+                
+                <div class="award-item">
+                    <h3>Best Paper Presentation Award</h3>
+                    <p>ICBET Conference, 2022 and 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="references">
+        <div class="container">
+            <h2>References</h2>
+            
+            <div class="reference-item">
+                <div class="reference-name">Dr. Marwan El-Rich</div>
+                <div class="reference-title">Associate Professor, Department of Mechanical Engineering</div>
+                <div class="reference-contact">Khalifa University, UAE | Phone: +971 2 312 4193 | Email: marwan.elrich@ku.ac.ae</div>
+            </div>
+            
+            <div class="reference-item">
+                <div class="reference-name">Dr. Kinda Khalaf</div>
+                <div class="reference-title">Associate Professor & Associate Chair, Department of Biomedical Engineering</div>
+                <div class="reference-contact">Khalifa University, UAE | Phone: +971 2 312 3948 | Email: kinda.khalaf@ku.ac.ae</div>
+            </div>
+            
+            <!-- More references would be listed here -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/rajanprasad460" target="_blank">GitHub</a>
+                <a href="skype:rajanprasad460">Skype</a>
+                <a href="mailto:rajanprasad460@hotmail.com">Email</a>
+            </div>
+            <p>© 2025 Rajan Prasad. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>
