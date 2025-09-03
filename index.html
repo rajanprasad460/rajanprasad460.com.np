@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Rajan Prasad | Mechanical Engineering Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #1a4b8c;
@@ -58,6 +59,7 @@
             margin-bottom: 1rem;
             font-size: 3rem;
             color: var(--primary-color);
+            border: 4px solid white;
         }
         
         h1 {
@@ -109,6 +111,12 @@
             width: 60px;
             height: 3px;
             background-color: var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
         }
         
         .timeline-item {
@@ -232,24 +240,6 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .reference-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .reference-name {
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .reference-title {
-            font-style: italic;
-            margin-bottom: 0.3rem;
-        }
-        
-        .reference-contact {
-            color: var(--light-text);
-        }
-        
         footer {
             background-color: var(--primary-color);
             color: white;
@@ -267,6 +257,37 @@
         .social-links a {
             color: white;
             text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+        
+        .nav-list li {
+            margin: 0 1rem;
+        }
+        
+        .nav-list a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-list a:hover {
+            color: var(--accent-color);
         }
         
         @media (min-width: 768px) {
@@ -289,6 +310,16 @@
                 justify-content: flex-start;
             }
         }
+        
+        @media (max-width: 767px) {
+            .nav-list {
+                flex-wrap: wrap;
+            }
+            
+            .nav-list li {
+                margin: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -301,15 +332,15 @@
                     <div class="title">PhD in Mechanical Engineering | Researcher in Rehabilitation Robotics</div>
                     <div class="contact-info">
                         <div class="contact-item">
-                            <span>📍</span>
+                            <i class="fas fa-map-marker-alt"></i>
                             <span>Khalifa University, Abu Dhabi (UAE)</span>
                         </div>
                         <div class="contact-item">
-                            <span>📞</span>
+                            <i class="fas fa-phone"></i>
                             <span>+971-501240069, +977-9848305168</span>
                         </div>
                         <div class="contact-item">
-                            <span>✉️</span>
+                            <i class="fas fa-envelope"></i>
                             <span>rajanprasad460@hotmail.com</span>
                         </div>
                     </div>
@@ -318,10 +349,23 @@
         </div>
     </header>
 
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#awards">Awards</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
             <p>I am a Post Doctoral Fellow at Khalifa University with a PhD in Mechanical Engineering. My research focuses on developing innovative bio-robotic assistive exoskeletons for stroke patient rehabilitation and studying the influence of biofeedback on reducing mental stress. I have extensive experience in dynamics, control systems, and rehabilitation robotics.</p>
+            <p>My work spans from cable-driven exoskeletons for rehabilitation to underwater hybrid manipulators and stress analysis through bio-signals. I'm passionate about creating engineering solutions that directly benefit human health and wellbeing.</p>
         </div>
     </section>
 
@@ -335,6 +379,7 @@
                 <div class="timeline-subtitle">Department of Mechanical and Nuclear Engineering, Khalifa University, UAE</div>
                 <div class="timeline-details">
                     <p>Focus area: "Underwater hybrid manipulator: soft robotic arm for support and manipulation"</p>
+                    <p>N-link serial chain based discrete rigid manipulator design, dynamics and control (Elephant trunk inspired)</p>
                 </div>
             </div>
             
@@ -344,6 +389,7 @@
                 <div class="timeline-subtitle">Khalifa University, UAE</div>
                 <div class="timeline-details">
                     <p>Focus area: "Influence of Biofeedback on reducing mental stress"</p>
+                    <p>Recording bio-signals such as heart rate, ECG, EEG, PPG, and other related signals to study stress levels</p>
                 </div>
             </div>
             
@@ -353,6 +399,7 @@
                 <div class="timeline-subtitle">Khalifa University, UAE</div>
                 <div class="timeline-details">
                     <p>Thesis: "Development of Innovative Bio robotic Assistive Exoskeletons for Stroke Patients Rehabilitation"</p>
+                    <p>Developed a simulation-based framework for analysis of cable-driven lower limb rehabilitation exoskeletons (C-LREX)</p>
                 </div>
             </div>
             
@@ -362,6 +409,7 @@
                 <div class="timeline-subtitle">Beijing Institute of Technology, China</div>
                 <div class="timeline-details">
                     <p>Thesis: "Real-time torque vectoring control of an off-road unmanned ground vehicle with multi-complex nonlinear constraints"</p>
+                    <p>Honored with 'Distinguish International Student Award 2017-2018'</p>
                 </div>
             </div>
             
@@ -371,7 +419,7 @@
                 <div class="timeline-subtitle">Institute of Engineering, Western Region Campus, Pokhara, Nepal</div>
                 <div class="timeline-details">
                     <p>Topper of BME/069 Batch</p>
-                    <p>Final Year Project: "Design and Development of Reaper 'Mechanical Hauss'"</p>
+                    <p>Final Year Project: "Design and Development of Reaper 'Mechanical Hauss'" aimed at helping small-scale farmers</p>
                 </div>
             </div>
         </div>
@@ -431,6 +479,13 @@
             <h2>Publications</h2>
             
             <h3>Journal Articles</h3>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad R., Dimassi, Z., Jelinek H.F.</div>
+                <div class="pub-title">Towards Reliable ECG-derived Respiratory Monitoring via Baseline Wander Removal Techniques</div>
+                <div class="pub-venue">Scientific Reports (Submitted, Under Revision)</div>
+            </div>
+            
             <div class="publication-item">
                 <div class="pub-authors">Prasad R., El-Rich M., Awad M.I., Khalaf K.</div>
                 <div class="pub-title">Simulation of Stroke Gait Impairment Correction Using a Cable Driven Lower Limb Rehabilitation Exoskeleton (C-LREX)</div>
@@ -449,9 +504,29 @@
                 </div>
             </div>
             
-            <!-- More publications would be listed here -->
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., El-Rich, M., Awad, M. I., Agrawal, S. K. & Khalaf, K.</div>
+                <div class="pub-title">Bi-Planar Trajectory Tracking with a Novel 3DOF Cable Driven Lower Limb Rehabilitation Exoskeleton (C-LREX)</div>
+                <div class="pub-venue">Sensors 23, 2023</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R. et al.</div>
+                <div class="pub-title">A Framework for Determining the Performance and Requirements of Cable-Driven Mobile Lower Limb Rehabilitation Exoskeletons</div>
+                <div class="pub-venue">Front. Bioeng. Biotechnol. 10, 2022</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., Ma, Y., Wang, Y. & Zhang, H.</div>
+                <div class="pub-title">Hierarchical coordinated control distribution and experimental verification for six-wheeled unmanned ground vehicles</div>
+                <div class="pub-venue">Proc. Inst. Mech. Eng. Part D J. Automob. Eng. 095440702094082, 2020</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1177/0954407020940823" target="_blank">DOI</a>
+                </div>
+            </div>
             
             <h3>Conference Papers</h3>
+            
             <div class="publication-item">
                 <div class="pub-authors">Prasad, R., Rosyid A., Renda F., El-Khasawneh B.</div>
                 <div class="pub-title">Cable Driven Elephant Trunk-Inspired Robot: Analytical Derivatives and Computational Insights</div>
@@ -461,7 +536,65 @@
                 </div>
             </div>
             
-            <!-- More conference papers would be listed here -->
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., Nasrat, S., Dimassi, Z., Alefshiat, E. & Jelinek, H. F.</div>
+                <div class="pub-title">Participants tend to Synchronize with the Tibetan Singing Bowl</div>
+                <div class="pub-venue">2024 13th Conference of the European Study Group on Cardiovascular Oscillations (ESGCO)</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1109/ESGCO63003.2024.10766966" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Nasrat, S. et al.</div>
+                <div class="pub-title">Multiscaled crucial events complexity analysis of heart rate signals during Tibetan singing bowls meditation</div>
+                <div class="pub-venue">2024 13th Conference of the European Study Group on Cardiovascular Oscillations (ESGCO)</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1109/ESGCO63003.2024.10766966" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Ihsan Khan, M. S. et al.</div>
+                <div class="pub-title">Baevsky's Stress Index as a Sensitive Indicator for Biofeedback Efficacy in Medical Students: a Pilot Study</div>
+                <div class="pub-venue">2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1109/EMBC53108.2024.10782708" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">M. Alani, F. et al.</div>
+                <div class="pub-title">Complex Correlation Method Identifies Efficacy of One-week Mindfulness Training in College Students</div>
+                <div class="pub-venue">2023 Computing in Cardiology (CinC)</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., Khalaf, K., Awad, M. I. & El-Rich, M.</div>
+                <div class="pub-title">Influence of Controller on Cable Driven Lower Limb Rehabilitation Exoskeleton (C-LREX): PD vs MPC</div>
+                <div class="pub-venue">9th International Conference on Control, Decision and Information Technologies (CoDIT)</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R., Khalaf, K., Awad, M. I. & El-Rich, M.</div>
+                <div class="pub-title">Assisting Stroke Gait with Cable Driven Lower Limb Rehabilitation Exoskeleton (C-LREX): Simulation Study</div>
+                <div class="pub-venue">13th International Conference on Biomedical Engineering and Technology (ICBET)</div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R. et al.</div>
+                <div class="pub-title">A Generalized Framework for the Assessment of Various Configurations of Cable-Driven Mobile Lower Limb Rehabilitation Exoskeletons</div>
+                <div class="pub-venue">Proceedings of the 12th International Conference on Biomedical Engineering and Technology</div>
+                <div class="pub-links">
+                    <a href="https://doi.org/10.1145/3535694.3535716" target="_blank">DOI</a>
+                </div>
+            </div>
+            
+            <div class="publication-item">
+                <div class="pub-authors">Prasad, R. & Ma, Y.</div>
+                <div class="pub-title">Hierarchical Control Coordination Strategy of Six Wheeled Independent Drive (6WID) Skid Steering Vehicle</div>
+                <div class="pub-venue">IFAC-PapersOnLine 52, 60–65, 2019</div>
+            </div>
         </div>
     </section>
 
@@ -486,41 +619,39 @@
                 </div>
                 
                 <div class="award-item">
+                    <h3>HSEB Scholarship</h3>
+                    <p>Awarded by the Higher Secondary Education Board (HSEB), Nepal</p>
+                </div>
+                
+                <div class="award-item">
                     <h3>Best Paper Presentation Award</h3>
                     <p>ICBET Conference, 2022 and 2023</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="references">
-        <div class="container">
-            <h2>References</h2>
             
-            <div class="reference-item">
-                <div class="reference-name">Dr. Marwan El-Rich</div>
-                <div class="reference-title">Associate Professor, Department of Mechanical Engineering</div>
-                <div class="reference-contact">Khalifa University, UAE | Phone: +971 2 312 4193 | Email: marwan.elrich@ku.ac.ae</div>
+            <h3>Conference Organization and Talks</h3>
+            <div class="timeline-details">
+                <p>Technical Committee Member, AIRC (May 2025), Savannah, GA, USA</p>
+                <p>Technical Committee Member, CCRIS (August 2025), Guangzhou, China</p>
+                <p>Technical Committee Member, AIRC (April 2026), Savannah, GA, USA</p>
+                <p>Technical Committee Member, CCEAI (Jan 2026), Buenos Aires, Argentina</p>
+                <p>Invited Speaker, ICBET (June 2025), Seoul, South Korea</p>
+                <p>Presenter, Soft Exoskeleton Robots and Digital Health Care Workshop (June 2025), University of Wales Trinity Saint David (UWTSD), United Kingdom</p>
             </div>
-            
-            <div class="reference-item">
-                <div class="reference-name">Dr. Kinda Khalaf</div>
-                <div class="reference-title">Associate Professor & Associate Chair, Department of Biomedical Engineering</div>
-                <div class="reference-contact">Khalifa University, UAE | Phone: +971 2 312 3948 | Email: kinda.khalaf@ku.ac.ae</div>
-            </div>
-            
-            <!-- More references would be listed here -->
         </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://github.com/rajanprasad460" target="_blank">GitHub</a>
-                <a href="skype:rajanprasad460">Skype</a>
-                <a href="mailto:rajanprasad460@hotmail.com">Email</a>
+                <a href="https://github.com/rajanprasad460" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="skype:rajanprasad460"><i class="fab fa-skype"></i></a>
+                <a href="mailto:rajanprasad460@hotmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fas fa-graduation-cap"></i></a>
             </div>
-            <p>© 2025 Rajan Prasad. All rights reserved.</p>
+            <p>© 2023 Rajan Prasad. All rights reserved.</p>
+            <p>ORCID: 0000-0003-3091-7138</p>
         </div>
     </footer>
 </body>
