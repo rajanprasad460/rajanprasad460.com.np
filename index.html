@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rajan Prasad — Dynamics & Motion</title>
+  <title>Dr. Rajan Prasad — Dynamics & Motion</title>
   <meta name="description" content="Portfolio of Rajan Prasad — dynamics, control, robotics, exoskeletons, and soft manipulators." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +147,7 @@
     <div class="hero">
       <div>
         <div class="chip">Dynamics • Control • Robotics</div>
-        <h1 class="title">Rajan Prasad</h1>
+        <h1 class="title">Dr. Rajan Prasad</h1>
         <p class="subtitle">Postdoctoral Fellow — Mechanical & Nuclear Engineering, Khalifa University (UAE). Research at the intersection of <strong>dynamics</strong>, <strong>motion control</strong>, <strong>exoskeletons</strong>, and <strong>soft manipulators</strong>.</p>
         <div class="cta">
           <a class="btn" href="mailto:rajanprasad460@hotmail.com">Contact</a>
@@ -294,233 +294,112 @@
   <section id="highlights">
     <div class="wrap">
       <h2 class="h">Featured Projects</h2>
-      <div class="grid">
-        
-        <!-- Project: C-LREX Tool -->
-        <article class="card col-12 reveal project" data-repo="C-LREX-Tool">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>C‑LREX — Cable‑Driven Lower‑Limb Exoskeleton</strong>
-              <div class="muted">In‑silico framework for cable routing, trajectory tracking, and controller comparison (PD vs MPC).</div>
+      <div class="grid project-grid">
+
+        <!-- C-LREX -->
+        <article class="card col-12 project">
+          <figure class="project-media">
+            <img src="assets/projects/c-lrex/1.gif" alt="C‑LREX simulation highlights" loading="lazy" decoding="async"/>
+          </figure>
+          <div class="project-body">
+            <h3 class="project-title">C‑LREX — Cable‑Driven Lower‑Limb Exoskeleton</h3>
+            <p class="muted">In‑silico framework for muscle‑inspired bi‑planar cable routing, trajectory tracking, and controller comparison (PD vs MPC). Built around MATLAB/Simulink + ADAMS.</p>
+            <div class="tags">
+              <span class="tag">MATLAB/Simulink</span><span class="tag">MSC ADAMS</span><span class="tag">MPC</span>
             </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/C-LREX-Tool" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Bi‑planar muscle‑inspired cable routing with kinematic constraints.</li>
-                <li>Trajectory tracking study comparing PD vs MPC controllers.</li>
-                <li>MATLAB/Simulink + MSC ADAMS integration; analytics for strain, tension, and torque.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">MATLAB/Simulink</span><span class="tag">ADAMS</span><span class="tag">MPC</span>
-              </div>
+            <div class="project-links">
+              <a class="btn alt" href="https://github.com/rajanprasad460/C-LREX-Tool" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="btn alt" href="https://www.youtube.com/watch?v=mZxa3f_iGNA" target="_blank" rel="noopener">Video ↗</a>
             </div>
-          </details>
+          </div>
         </article>
 
-        <!-- Project: AWID Vehicle -->
-        <article class="card col-12 reveal project" data-repo="AWID-Vehicle">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>AWID Vehicle — Torque Vectoring UGV</strong>
-              <div class="muted">Real‑time coordinated control distribution for all‑wheel independent drive (6WID) platforms.</div>
+		<!-- AWID / 6WID UGV -->
+		<article class="card col-12 project">
+		<div class="project-media media-grid" role="group" aria-label="AWID torque vectoring demo clips">
+		<div class="cell"><img src="assets/projects/awid/1.gif" alt="AWID torque vectoring UGV — demo 1" loading="lazy" decoding="async"/></div>
+		<div class="cell"><img src="assets/projects/awid/2.gif" alt="AWID torque vectoring UGV — demo 2" loading="lazy" decoding="async"/></div>
+		<div class="cell"><img src="assets/projects/awid/3.gif" alt="AWID torque vectoring UGV — demo 3" loading="lazy" decoding="async"/></div>
+		<div class="cell"><img src="assets/projects/awid/4.gif" alt="AWID torque vectoring UGV — demo 4" loading="lazy" decoding="async"/></div>
+		</div>
+          <div class="project-body">
+            <h3 class="project-title">AWID Vehicle — Torque Vectoring UGV</h3>
+            <p class="muted">Real‑time hierarchical control distribution under nonlinear constraints for a six‑wheel independent‑drive skid‑steer platform.</p>
+            <div class="tags">
+              <span class="tag">UGV</span><span class="tag">Torque Vectoring</span><span class="tag">Real‑time</span>
             </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/AWID-Vehicle" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Hierarchical control under nonlinear constraints (skid‑steer dynamics).</li>
-                <li>Implements torque vectoring and traction management.</li>
-                <li>Bench‑tested on embedded controller; simulation‑in‑the‑loop.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">UGV</span><span class="tag">Torque Vectoring</span><span class="tag">Real‑time</span>
-              </div>
+            <div class="project-links">
+              <a class="btn alt" href="https://github.com/rajanprasad460/AWID-Vehicle" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="btn alt" href="https://www.youtube.com/watch?v=47w8Ac2L7tg" target="_blank" rel="noopener">Video ↗</a>
             </div>
-          </details>
+          </div>
         </article>
 
-        <!-- Project: Rimless Wheel -->
-        <article class="card col-12 reveal project" data-repo="RimLessWheel">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>Rimless Wheel Simulation</strong>
-              <div class="muted">Passive dynamic walking on an incline with spoke impacts, energy behavior, and visualization.</div>
+        <!-- Elephant‑Trunk Manipulator -->
+        <article class="card col-12 project">
+		<div class="project-media media-grid" role="group" aria-label="AWID torque vectoring demo clips">
+		<div class="cell"><img src="assets/projects/elephant-trunk/1.gif" alt="Elephant Trunk Motion — demo 1" loading="lazy" decoding="async"/></div>
+		<div class="cell"><img src="assets/projects/elephant-trunk/2.gif" alt="Elephant Trunk Motion — demo 2" loading="lazy" decoding="async"/></div>
+		</div>
+          <div class="project-body">
+            <h3 class="project-title">Elephant‑Trunk‑Inspired Soft Manipulator</h3>
+            <p class="muted">Generalized framework for n‑link serial chains (1–3 DOFs/joint) with fast analytical partial derivatives; toward underwater hybrid manipulation.</p>
+            <div class="tags">
+              <span class="tag">Soft Robotics</span><span class="tag">Analytical Partials</span><span class="tag">Underwater</span>
             </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/RimLessWheel" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Hybrid dynamics with restitution at impacts.</li>
-                <li>Animated visualization (inclined + straight views) with optional export.</li>
-                <li>Single‑script runnable in MATLAB.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">MATLAB</span><span class="tag">Hybrid Dynamics</span><span class="tag">Animation</span>
-              </div>
-              <div class="mini-canvas" data-kind="wheel" aria-hidden="true"></div>
+            <div class="project-links">
+              <a class="btn alt" href="mailto:rajanprasad460@hotmail.com?subject=Elephant%20Trunk%20Manipulator%20—%20info" rel="noopener">Contact for repo/details ↗</a>
             </div>
-          </details>
+          </div>
         </article>
 
-        <!-- Project: Arts via MATLAB -->
-        <article class="card col-12 reveal project" data-repo="Arts-Via-MATLAB">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>Arts via MATLAB</strong>
-              <div class="muted">Parametric drawings & animations (spirals, Fourier circles, and more).</div>
+        <!-- Rimless Wheel Simulation -->
+        <article class="card col-12 project">
+		<div class="project-media media-grid" role="group" aria-label="AWID torque vectoring demo clips">
+		<div class="cell"><img src="assets/projects/rimless-wheel/1.gif" alt="Rimless Wheel Motion — demo 1" loading="lazy" decoding="async"/></div>
+		<div class="cell"><img src="assets/projects/rimless-wheel/2.gif" alt="Rimless Wheel Motion — demo 2" loading="lazy" decoding="async"/></div>
+		</div>
+          <div class="project-body">
+            <h3 class="project-title">Rimless Wheel — Passive Dynamic Walking</h3>
+            <p class="muted">MATLAB simulation of a rimless wheel descending an incline with impact restitution and energy behavior visualization.</p>
+            <div class="tags">
+              <span class="tag">MATLAB</span><span class="tag">Hybrid Dynamics</span><span class="tag">Animation</span>
             </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/Arts-Via-MATLAB" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Generative shapes and animated patterns using MATLAB.</li>
-                <li>Includes scripts for spiral and circle‑arrangement animations.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">Generative Art</span><span class="tag">Animation</span><span class="tag">MATLAB</span>
-              </div>
-              <div class="mini-canvas" data-kind="spiral" aria-hidden="true"></div>
+            <div class="project-links">
+              <a class="btn alt" href="https://github.com/rajanprasad460/RimLessWheel" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
-          </details>
-        </article>
-
-        <!-- Project: ABODE -->
-        <article class="card col-12 reveal project" data-repo="ABODE">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>ABODE — Asymptotic Bode Plot Generator</strong>
-              <div class="muted">Combines MATLAB bode plot with asymptotes and a table of breakpoints.</div>
-            </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/ABODE" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Educational tool to visualize magnitude‑phase with asymptotic lines.</li>
-                <li>MIT‑licensed; beginner‑friendly.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">Control</span><span class="tag">Bode</span><span class="tag">MATLAB</span>
-              </div>
-            </div>
-          </details>
-        </article>
-
-        <!-- Project: AnyMatBatch -->
-        <article class="card col-12 reveal project" data-repo="AnyMatBatch">
-          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-            <div class="spark" aria-hidden="true"></div>
-            <div style="flex:1 1 auto">
-              <strong>AnyMatBatch — Batch Runner for AnyBody Models</strong>
-              <div class="muted">MATLAB‑based batch execution of AnyBody simulations with result collection.</div>
-            </div>
-            <div class="pill"><a href="https://github.com/rajanprasad460/AnyMatBatch" target="_blank" rel="noopener">GitHub ↗</a></div>
-          </header>
-          <details class="proj-details">
-            <summary>Read more</summary>
-            <div class="proj-body">
-              <ul class="clean muted">
-                <li>Alternative to AnyPy for batch model runs via MATLAB.</li>
-                <li>Includes demo analyzer and camera template.</li>
-              </ul>
-              <div class="tags">
-                <span class="tag">AnyBody</span><span class="tag">MATLAB</span><span class="tag">Batch</span>
-              </div>
-            </div>
-          </details>
+          </div>
         </article>
 
       </div>
     </div>
   </section>
   
-  <style>
-    /* Project details UI + little spark animation */
-    .proj-details{margin-top:.75rem}
-    .proj-details>summary{cursor:pointer; list-style:none; font-weight:700; padding:.5rem .75rem; border:1px solid var(--border); border-radius:10px; width:max-content; user-select:none}
-    .proj-details>summary::marker{display:none}
-    .proj-details[open] .proj-body{max-height:1000px; opacity:1}
-    .proj-body{max-height:0; overflow:hidden; opacity:0; transition:max-height .6s ease, opacity .6s ease; padding:.5rem 0}
-    .project{position:relative}
-    .spark{width:18px; height:18px; border-radius:50%; background:radial-gradient(circle, color-mix(in oklab, var(--accent) 90%, transparent) 0%, transparent 60%); filter:blur(1px); animation:twinkle 2.2s ease-in-out infinite;}
-    @keyframes twinkle{ 0%,100%{transform:translateY(0) scale(.9); opacity:.6} 50%{transform:translateY(-4px) scale(1.15); opacity:1} }
-    .mini-canvas{height:140px; border:1px dashed var(--border); border-radius:12px; margin-top:.75rem; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 96%, black 4%), color-mix(in oklab, var(--panel) 88%, black 12%)); position:relative}
-  </style>
+	<style>
+	/* Project media-first layout with big GIF on top and details + links below */
+	.project{display:block}
+	.project-media{width:98%; aspect-ratio:4/4; border-radius:12px; overflow:hidden; background:color-mix(in oklab, var(--panel) 96%, black 4%); border:1px solid var(--border)}
+	.project-media>img{width:100%; height:100%; object-fit:cover; display:block}
+	.project-body{padding-top:1rem}
+	.project-title{margin:.25rem 0 .25rem; font-family:"Space Grotesk";}
+	.project-links{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.75rem}
+
+
+	/* AWID: 2×2 table-like grid of GIFs */
+	.project-media.media-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:.6rem; padding:.6rem; aspect-ratio:auto; background:color-mix(in oklab, var(--panel) 96%, black 4%); border:1px solid var(--border); border-radius:12px; }
+	.project-media.media-grid .cell{ position:relative; border-radius:10px; overflow:hidden; aspect-ratio:16/9; background:color-mix(in oklab, var(--panel) 92%, black 8%); display:grid; place-items:center; }
+	.project-media.media-grid .cell img{ width:100%; height:100%; object-fit:contain; object-position:center; display:block }
+
+
+	/* Responsive: stack to 1 column on very narrow phones */
+	@media (max-width: 480px){ .project-media.media-grid{ grid-template-columns: 1fr; } }
+
+
+	/* Reduce aspect ratio on very small devices for more visible content below */
+	@media (max-width: 520px){ .project-media{ aspect-ratio: 1/1 } }
+	</style>
   
-  <script>
-    // Tiny animations for project cards: spiral + wheel drawn on demand when opened
-    (function(){
-      function drawSpiral(el){
-        if(el.__drawn) return; el.__drawn = true;
-        const cvs = document.createElement('canvas'); el.appendChild(cvs);
-        const ctx = cvs.getContext('2d');
-        function size(){ cvs.width = el.clientWidth * devicePixelRatio; cvs.height = el.clientHeight * devicePixelRatio; }
-        size();
-        const cx = ()=>cvs.width/2, cy = ()=>cvs.height/2; let t=0;
-        function tick(){
-          ctx.clearRect(0,0,cvs.width,cvs.height);
-          ctx.save(); ctx.translate(cx(), cy());
-          ctx.beginPath();
-          let a = 0; const max = 1100; const k = 0.06;
-          for(let i=0;i<max;i++){
-            const r = k * a; const x = r * Math.cos(a); const y = r * Math.sin(a);
-            if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-            a += 0.15 + 0.02*Math.sin(t*0.02);
-          }
-          ctx.lineWidth = 2*devicePixelRatio;
-          const c = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-          ctx.strokeStyle = c; ctx.stroke(); ctx.restore(); t++; requestAnimationFrame(tick);
-        }
-        tick();
-        new ResizeObserver(size).observe(el);
-      }
-      function drawWheel(el){
-        if(el.__drawn) return; el.__drawn = true; const cvs=document.createElement('canvas'); el.appendChild(cvs); const ctx=cvs.getContext('2d');
-        function size(){ cvs.width = el.clientWidth * devicePixelRatio; cvs.height = el.clientHeight * devicePixelRatio; }
-        size();
-        let angle=0; const spokes=8; const R=()=>Math.min(cvs.width,cvs.height)*0.35;
-        function tick(){
-          ctx.clearRect(0,0,cvs.width,cvs.height);
-          ctx.save(); ctx.translate(cvs.width/2, cvs.height*0.7);
-          // ground
-          ctx.beginPath(); ctx.moveTo(-cvs.width,0); ctx.lineTo(cvs.width,0); ctx.lineWidth=2*devicePixelRatio; ctx.strokeStyle='rgba(127,127,127,.4)'; ctx.stroke();
-          // wheel
-          ctx.translate(-cvs.width*0.3, -R());
-          ctx.beginPath(); ctx.arc(0,0,R(),0,Math.PI*2);
-          ctx.lineWidth=2*devicePixelRatio; ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent2'); ctx.stroke();
-          for(let i=0;i<spokes;i++){
-            const a = angle + i*(Math.PI*2/spokes);
-            ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(R()*Math.cos(a), R()*Math.sin(a)); ctx.stroke();
-          }
-          ctx.restore(); angle += 0.02; requestAnimationFrame(tick);
-        }
-        tick(); new ResizeObserver(size).observe(el);
-      }
-      document.querySelectorAll('.proj-details').forEach(d=>{
-        d.addEventListener('toggle', ()=>{
-          if(d.open){
-            const mc = d.querySelector('.mini-canvas');
-            if(mc){ const kind = mc.getAttribute('data-kind'); if(kind==='spiral') drawSpiral(mc); if(kind==='wheel') drawWheel(mc); }
-          }
-        });
-      });
-    })();
-  </script>
+  
 
   <section id="skills">
     <div class="wrap">
