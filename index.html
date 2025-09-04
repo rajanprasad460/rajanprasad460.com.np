@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* ============================
+       THEME (Dark default + Light)
+       ============================ */
     :root{
+      /* Dark theme (default) */
       --bg: #0a0c10; /* deep space */
       --panel: #0f141b;
       --ink: #e8eefc;
@@ -18,15 +22,43 @@
       --accent2: #7cfaa8; /* green */
       --card: #0b1220;
       --glow: 0 0 0px rgba(109,207,246,0), 0 0 0px rgba(124,250,168,0);
+      --bg-grad: radial-gradient(1200px 800px at 20% 10%, #0f1830 0, #0a0c10 60%);
+      --border: rgba(255,255,255,.08);
     }
+    /* Light theme tokens */
+    [data-theme="light"]{
+      --bg: #f6f8ff;
+      --panel: #ffffff;
+      --ink: #0b1220;
+      --muted: #5b6b86;
+      --accent: #086cd9;
+      --accent2: #0a8f5b;
+      --card: #ffffff;
+      --glow: 0 10px 30px rgba(8,108,217,.06), 0 0 0 rgba(10,143,91,0);
+      --bg-grad: radial-gradient(1200px 800px at 20% 10%, #e9f1ff 0, #f6f8ff 60%);
+      --border: rgba(0,0,0,.08);
+    }
+
     *{box-sizing:border-box}
     html,body{height:100%;}
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:radial-gradient(1200px 800px at 20% 10%, #0f1830 0, #0a0c10 60%);
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg-grad);
       overflow-x:hidden;
     }
     a{color:var(--accent); text-decoration:none}
-    a:hover{opacity:.85}
+    a:hover{opacity:.88}
+
+    /* Theme toggle */
+    .theme-toggle{
+      position:fixed; right:1rem; top:.9rem; z-index:10;
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.55rem .75rem; border-radius:999px; font-weight:700; letter-spacing:.2px;
+      border:1px solid var(--border); background:linear-gradient(180deg, var(--panel), color-mix(in oklab, var(--panel) 85%, black 15%));
+      box-shadow: 0 6px 16px rgba(0,0,0,.08);
+      cursor:pointer;
+    }
+    .theme-toggle kbd{font-family:inherit; font-size:.85rem; opacity:.7}
+
     /* HERO */
     header{
       position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; padding:6rem 1.25rem 4rem; isolation:isolate;
@@ -36,19 +68,28 @@
     .title{
       font-family:"Space Grotesk",Inter,system-ui; font-size: clamp(2rem, 5vw, 4rem); line-height:1.05; letter-spacing:-.015em; margin:0 0 1rem;
     }
-    .subtitle{font-size: clamp(1rem, 2vw, 1.2rem); color:var(--muted); margin: .25rem 0 1.5rem}
-    .chip{display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient( to right, rgba(109,207,246,.15), rgba(124,250,168,.15)); padding:.5rem .75rem; border:1px solid rgba(255,255,255,.08); border-radius:999px; font-size:.9rem}
-    .cta{display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.25rem}
-    .btn{position:relative; display:inline-block; padding:.9rem 1.2rem; border-radius:14px; font-weight:700; letter-spacing:.2px; transition:transform .2s ease, box-shadow .2s ease; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, #11182a, #0a0f1d);} 
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(109,207,246,.15)}
+    .subtitle{font-size: clamp(1rem, 2.2vw, 1.2rem); color:var(--muted); margin: .25rem 0 1.5rem}
+    .chip{display:inline-flex; align-items:center; gap:.5rem; background:linear-gradient( to right, color-mix(in oklab, var(--accent) 18%, transparent), color-mix(in oklab, var(--accent2) 18%, transparent)); padding:.5rem .75rem; border:1px solid var(--border); border-radius:999px; font-size:.9rem}
+    .cta{display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.25rem; justify-content:flex-start}
+    @media (max-width: 900px){ .cta{justify-content:center} }
+    .btn{position:relative; display:inline-block; padding:.9rem 1.2rem; border-radius:14px; font-weight:700; letter-spacing:.2px; transition:transform .2s ease, box-shadow .2s ease; border:1px solid var(--border); background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, black 12%), color-mix(in oklab, var(--panel) 75%, black 25%));}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 30px color-mix(in oklab, var(--accent) 20%, transparent)}
     .btn.alt{background:transparent}
+
+    /*
+      PROFILE PORTRAIT — switched to <img> so it always loads,
+      with an automatic fallback if the image is missing.
+    */
     .portrait{
-      width:min(360px, 80vw); aspect-ratio:1/1; border-radius:28px; background:linear-gradient(145deg,#0b1426,#060a14); border:1px solid rgba(255,255,255,.06);
-      box-shadow: 0 20px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.02) inset; position:relative; overflow:hidden;
+      width:min(360px, 82vw); aspect-ratio:1/1; border-radius:28px; background:linear-gradient(145deg,color-mix(in oklab, var(--card) 92%, black 8%), color-mix(in oklab, var(--card) 85%, black 15%)); border:1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.02) inset; position:relative; overflow:hidden; margin-inline:auto;
     }
-    .orb{
-      position:absolute; inset:auto -20%  -20% auto; width:260px; height:260px; background:radial-gradient(circle at 30% 30%, rgba(109,207,246,.9), rgba(109,207,246,0) 60%); filter:blur(10px); mix-blend:screen; animation:float 8s ease-in-out infinite;
+    .portrait img{ width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.08) saturate(.9) }
+    .portrait[data-missing]::after{
+      content:"RP"; position:absolute; inset:0; display:grid; place-items:center; font-family:"Space Grotesk"; font-weight:700; font-size:clamp(3rem, 16vw, 5rem);
+      color:color-mix(in oklab, var(--ink) 85%, transparent); background:repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--accent) 24%, transparent) 0 10deg, transparent 10deg 20deg);
     }
+    .orb{ position:absolute; inset:auto -20%  -20% auto; width:260px; height:260px; background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 90%, transparent), rgba(0,0,0,0) 60%); filter:blur(10px); mix-blend:screen; animation:float 8s ease-in-out infinite; }
     @keyframes float{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(-12px,-8px)} }
 
     /* SECTIONS */
@@ -56,11 +97,11 @@
     .wrap{ max-width:1100px; margin:0 auto; }
     .h{ font-family:"Space Grotesk"; font-weight:700; letter-spacing:.3px; font-size:clamp(1.4rem, 2.5vw, 2rem); margin:0 0 1.5rem }
     .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem }
-    .card{ grid-column: span 12; background:linear-gradient(180deg, rgba(12,18,32,.9), rgba(10,14,24,.9)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:1.25rem 1.25rem; box-shadow:var(--glow); transition:transform .25s ease, box-shadow .25s ease}
-    .card:hover{ transform: translateY(-4px); box-shadow:0 10px 40px rgba(109,207,246,.12)}
+    .card{ grid-column: span 12; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 96%, black 4%), color-mix(in oklab, var(--card) 88%, black 12%)); border:1px solid var(--border); border-radius:18px; padding:1.25rem 1.25rem; box-shadow:var(--glow); transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{ transform: translateY(-4px); box-shadow:0 10px 40px color-mix(in oklab, var(--accent) 18%, transparent)}
     .muted{ color:var(--muted); }
-    .tag{ display:inline-block; padding:.25rem .5rem; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:8px; font-size:.85rem; margin:.125rem .25rem .25rem 0 }
-    .pill{ display:inline-flex; align-items:center; gap:.35rem; padding:.35rem .6rem; border-radius:999px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.05); font-size:.8rem }
+    .tag{ display:inline-block; padding:.25rem .5rem; background:color-mix(in oklab, var(--panel) 90%, white 10%); border:1px solid var(--border); border-radius:8px; font-size:.85rem; margin:.125rem .25rem .25rem 0 }
+    .pill{ display:inline-flex; align-items:center; gap:.35rem; padding:.35rem .6rem; border-radius:999px; border:1px solid var(--border); background:color-mix(in oklab, var(--panel) 92%, black 8%); font-size:.8rem }
 
     @media(min-width: 800px){
       .col-6{ grid-column: span 6; }
@@ -70,9 +111,9 @@
 
     /* TIMELINE */
     .timeline{ position:relative; margin-left: .25rem }
-    .timeline:before{ content:""; position:absolute; left:.5rem; top:0; bottom:0; width:2px; background: linear-gradient(to bottom, rgba(109,207,246,.8), rgba(124,250,168,.2)); filter: drop-shadow(0 0 6px rgba(109,207,246,.4)); }
+    .timeline:before{ content:""; position:absolute; left:.5rem; top:0; bottom:0; width:2px; background: linear-gradient(to bottom, color-mix(in oklab, var(--accent) 80%, transparent), color-mix(in oklab, var(--accent2) 20%, transparent)); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 40%, transparent)); }
     .t-item{ position:relative; padding-left:2.25rem; margin:1rem 0 }
-    .t-dot{ position:absolute; left:-.2rem; top:.3rem; width:10px; height:10px; border-radius:50%; background: var(--accent2); box-shadow: 0 0 0 6px rgba(124,250,168,.08) }
+    .t-dot{ position:absolute; left:-.2rem; top:.3rem; width:10px; height:10px; border-radius:50%; background: var(--accent2); box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent2) 8%, transparent) }
 
     /* LISTS */
     ul.clean{ list-style:none; padding:0; margin:.5rem 0 0}
@@ -86,11 +127,22 @@
     .reveal.show{ opacity:1; transform:none; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 
     /* BACKGROUND PARTICLES */
-    canvas#stars{ position:fixed; inset:0; width:100%; height:100%; z-index:-1; opacity:.5 }
+    canvas#stars{ position:fixed; inset:0; width:100%; height:100%; z-index:-1; opacity:.45 }
+
+    /* Small-device polish */
+    @media (max-width: 600px){
+      header{ padding-top:5.25rem; min-height:unset }
+      .chip{ font-size:.85rem }
+      .btn{ width:100%; text-align:center }
+      .card{ padding:1rem }
+    }
   </style>
 </head>
 <body>
-  <canvas id="stars"></canvas>
+  <!-- Theme toggle button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">☀️ <kbd>Theme</kbd></button>
+
+  <canvas id="stars" aria-hidden="true"></canvas>
   <header>
     <div class="hero">
       <div>
@@ -103,11 +155,11 @@
           <a class="btn alt" href="#publications">Publications</a>
         </div>
       </div>
-      <div class="portrait reveal">
-        <!-- You can drop your photo into /assets/me.jpg and set it as background-image below -->
-        <div style="position:absolute; inset:0; background: url('/portfolio/assets/me.jpg') center/cover no-repeat; filter:contrast(1.10) saturate(0.80);"></div>
-        <div class="orb"></div>
-      </div>
+      <figure class="portrait reveal" id="portrait">
+        <!-- Use an <img> so the photo reliably appears; a graceful fallback will render initials if missing. -->
+        <img id="headshot" src="assets/me.jpg" alt="Portrait of Rajan Prasad" loading="eager" decoding="async" />
+        <div class="orb" aria-hidden="true"></div>
+      </figure>
     </div>
   </header>
 
@@ -139,77 +191,77 @@
     </div>
   </section>
 
-	<section id="education">
-	<div class="wrap">
-	<h2 class="h">Education</h2>
-	<div class="card reveal">
-	<div class="timeline">
-	<!-- PhD -->
-	<div class="t-item">
-	<div class="t-dot"></div>
-	<strong>Khalifa University — Doctor of Philosophy (PhD), Mechanical Engineering</strong>
-	<div class="muted">Sep 2019 – Jul 2023 • Grade: 3.97/4</div>
-	<ul class="clean muted">
-	<li>Developed an <em>in-silico</em> framework for analysis & design of cable-driven lower-limb rehabilitation exoskeletons (C-LREX).</li>
-	<li>Simulation-based pipeline for bi-planar cable routing and trajectory tracking; compared PD vs MPC strategies.</li>
-	</ul>
-	<div style="margin-top:.4rem">
-	<span class="tag">Abaqus</span>
-	<span class="tag">MSC ADAMS</span>
-	<span class="tag">MATLAB/Simulink</span>
-	<span class="tag">CATIA</span>
-	<span class="tag">AnyBody</span>
-	<span class="tag">Python</span>
-	</div>
-	<div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
-	<a class="pill" href="https://github.com/rajanprasad460/C-LREX-Tool" target="_blank" rel="noopener">GitHub — C-LREX Tool</a>
-	<a class="pill" href="https://www.youtube.com/watch?v=mZxa3f_iGNA" target="_blank" rel="noopener">🎬 Video: C-LREX Part I </a>
-	<a class="pill" href="https://www.youtube.com/watch?v=WifBneqDHrI" target="_blank" rel="noopener">🎬 Video: C-LREX Part II </a>
-	<a class="pill" href="https://www.youtube.com/watch?v=QfNDbSL-LNI" target="_blank" rel="noopener">🎬 Video: C-LREX Part III </a>
-	</div>
-	</div>
-	<!-- MSc -->
-	<div class="t-item">
-	<div class="t-dot"></div>
-	<strong>Beijing Institute of Technology — Master of Science (MS), Mechanical Engineering</strong>
-	<div class="muted">2017 – 2019 • Grade: A</div>
-	<ul class="clean muted">
-	<li>Real-Time Torque Vectoring Control of an Off-Road Unmanned Ground Vehicle with Multiple Complex Nonlinear Constraints.</li>
-	<li>Coordinated control distribution for All-Wheel Independent Drive (AWID) vehicles; implemented on embedded platform for verification.</li>
-	</ul>
-	<div style="margin-top:.4rem">
-	<span class="tag">MSC ADAMS</span>
-	<span class="tag">MATLAB/Simulink</span>
-	<span class="tag">pisnoop</span>
-	<span class="tag">CATIA</span>
-	<span class="tag">CAN-bus</span>
-	</div>
-	<div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
-	<a class="pill" href="https://www.youtube.com/watch?v=47w8Ac2L7tg" target="_blank" rel="noopener">🎬 Video: AWID six wheel </a>
-	</div>
-	</div>
-	<!-- Bachelors -->
-	<div class="t-item">
-	<div class="t-dot"></div>
-	<strong>Tribhuvan University — Bachelor of Engineering (BE), Mechanical Engineering</strong>
-	<div class="muted">2012 – 2016 • Grade: 79.65%</div>
-	<ul class="clean muted">
-	<li>Design & Development of Reaper — “Mechanical Hasua.”</li>
-	</ul>
-	<div style="margin-top:.4rem">
-	<span class="tag">Machine Design</span>
-	<span class="tag">CATIA</span>
-	<span class="tag">CAD/CAM</span>
-	<span class="tag">Cutting Tool Design</span>
-	</div>
-	<div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
-	<a class="pill" href="https://www.youtube.com/watch?v=gGXpr5ws5ZI" target="_blank" rel="noopener">🎬 Video: Mechanical Hasua (Reaper)</a>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</section>
+  <section id="education">
+    <div class="wrap">
+      <h2 class="h">Education</h2>
+      <div class="card reveal">
+        <div class="timeline">
+          <!-- PhD -->
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <strong>Khalifa University — Doctor of Philosophy (PhD), Mechanical Engineering</strong>
+            <div class="muted">Sep 2019 – Jul 2023 • Grade: 3.97/4</div>
+            <ul class="clean muted">
+              <li>Developed an <em>in-silico</em> framework for analysis & design of cable-driven lower-limb rehabilitation exoskeletons (C-LREX).</li>
+              <li>Simulation-based pipeline for bi-planar cable routing and trajectory tracking; compared PD vs MPC strategies.</li>
+            </ul>
+            <div style="margin-top:.4rem">
+              <span class="tag">Abaqus</span>
+              <span class="tag">MSC ADAMS</span>
+              <span class="tag">MATLAB/Simulink</span>
+              <span class="tag">CATIA</span>
+              <span class="tag">AnyBody</span>
+              <span class="tag">Python</span>
+            </div>
+            <div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
+              <a class="pill" href="https://github.com/rajanprasad460/C-LREX-Tool" target="_blank" rel="noopener">GitHub — C-LREX Tool</a>
+              <a class="pill" href="https://www.youtube.com/watch?v=mZxa3f_iGNA" target="_blank" rel="noopener">🎬 Video: C-LREX Part I </a>
+              <a class="pill" href="https://www.youtube.com/watch?v=WifBneqDHrI" target="_blank" rel="noopener">🎬 Video: C-LREX Part II </a>
+              <a class="pill" href="https://www.youtube.com/watch?v=QfNDbSL-LNI" target="_blank" rel="noopener">🎬 Video: C-LREX Part III </a>
+            </div>
+          </div>
+          <!-- MSc -->
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <strong>Beijing Institute of Technology — Master of Science (MS), Mechanical Engineering</strong>
+            <div class="muted">2017 – 2019 • Grade: A</div>
+            <ul class="clean muted">
+              <li>Real-Time Torque Vectoring Control of an Off-Road Unmanned Ground Vehicle with Multiple Complex Nonlinear Constraints.</li>
+              <li>Coordinated control distribution for All-Wheel Independent Drive (AWID) vehicles; implemented on embedded platform for verification.</li>
+            </ul>
+            <div style="margin-top:.4rem">
+              <span class="tag">MSC ADAMS</span>
+              <span class="tag">MATLAB/Simulink</span>
+              <span class="tag">pisnoop</span>
+              <span class="tag">CATIA</span>
+              <span class="tag">CAN-bus</span>
+            </div>
+            <div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
+              <a class="pill" href="https://www.youtube.com/watch?v=47w8Ac2L7tg" target="_blank" rel="noopener">🎬 Video: AWID six wheel </a>
+            </div>
+          </div>
+          <!-- Bachelors -->
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <strong>Tribhuvan University — Bachelor of Engineering (BE), Mechanical Engineering</strong>
+            <div class="muted">2012 – 2016 • Grade: 79.65%</div>
+            <ul class="clean muted">
+              <li>Design & Development of Reaper — “Mechanical Hasua.”</li>
+            </ul>
+            <div style="margin-top:.4rem">
+              <span class="tag">Machine Design</span>
+              <span class="tag">CATIA</span>
+              <span class="tag">CAD/CAM</span>
+              <span class="tag">Cutting Tool Design</span>
+            </div>
+            <div style="margin-top:.6rem; display:flex; gap:.5rem; flex-wrap:wrap">
+              <a class="pill" href="https://www.youtube.com/watch?v=gGXpr5ws5ZI" target="_blank" rel="noopener">🎬 Video: Mechanical Hasua (Reaper)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="experience">
     <div class="wrap">
@@ -243,36 +295,232 @@
     <div class="wrap">
       <h2 class="h">Featured Projects</h2>
       <div class="grid">
-        <div class="card col-6 reveal">
-          <strong>C‑LREX — Cable‑Driven Lower‑Limb Exoskeleton</strong>
-          <p class="muted">Simulation framework and control strategies (PD vs MPC) for stroke‑gait assistance; muscle‑inspired bi‑planar cable routing and trajectory tracking.</p>
-          <div>
-            <span class="tag">Simulation</span>
-            <span class="tag">MPC</span>
-            <span class="tag">Biomechatronics</span>
-          </div>
-        </div>
-        <div class="card col-6 reveal">
-          <strong>6WID / UGV Torque Vectoring</strong>
-          <p class="muted">Real‑time hierarchical control coordination for independent‑drive, skid‑steer platforms under nonlinear constraints.</p>
-          <div>
-            <span class="tag">UGV</span>
-            <span class="tag">Torque Vectoring</span>
-            <span class="tag">Real‑time</span>
-          </div>
-        </div>
-        <div class="card col-6 reveal">
-          <strong>Elephant‑Trunk‑Inspired Soft Manipulator</strong>
-          <p class="muted">Analytical derivatives and computational insights for cable‑driven continuum‑like serial chains; toward underwater manipulation.</p>
-          <div>
-            <span class="tag">Soft Robotics</span>
-            <span class="tag">Analytical Partials</span>
-            <span class="tag">Underwater</span>
-          </div>
-        </div>
+        
+        <!-- Project: C-LREX Tool -->
+        <article class="card col-12 reveal project" data-repo="C-LREX-Tool">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>C‑LREX — Cable‑Driven Lower‑Limb Exoskeleton</strong>
+              <div class="muted">In‑silico framework for cable routing, trajectory tracking, and controller comparison (PD vs MPC).</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/C-LREX-Tool" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Bi‑planar muscle‑inspired cable routing with kinematic constraints.</li>
+                <li>Trajectory tracking study comparing PD vs MPC controllers.</li>
+                <li>MATLAB/Simulink + MSC ADAMS integration; analytics for strain, tension, and torque.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">MATLAB/Simulink</span><span class="tag">ADAMS</span><span class="tag">MPC</span>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Project: AWID Vehicle -->
+        <article class="card col-12 reveal project" data-repo="AWID-Vehicle">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>AWID Vehicle — Torque Vectoring UGV</strong>
+              <div class="muted">Real‑time coordinated control distribution for all‑wheel independent drive (6WID) platforms.</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/AWID-Vehicle" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Hierarchical control under nonlinear constraints (skid‑steer dynamics).</li>
+                <li>Implements torque vectoring and traction management.</li>
+                <li>Bench‑tested on embedded controller; simulation‑in‑the‑loop.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">UGV</span><span class="tag">Torque Vectoring</span><span class="tag">Real‑time</span>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Project: Rimless Wheel -->
+        <article class="card col-12 reveal project" data-repo="RimLessWheel">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>Rimless Wheel Simulation</strong>
+              <div class="muted">Passive dynamic walking on an incline with spoke impacts, energy behavior, and visualization.</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/RimLessWheel" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Hybrid dynamics with restitution at impacts.</li>
+                <li>Animated visualization (inclined + straight views) with optional export.</li>
+                <li>Single‑script runnable in MATLAB.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">MATLAB</span><span class="tag">Hybrid Dynamics</span><span class="tag">Animation</span>
+              </div>
+              <div class="mini-canvas" data-kind="wheel" aria-hidden="true"></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Project: Arts via MATLAB -->
+        <article class="card col-12 reveal project" data-repo="Arts-Via-MATLAB">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>Arts via MATLAB</strong>
+              <div class="muted">Parametric drawings & animations (spirals, Fourier circles, and more).</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/Arts-Via-MATLAB" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Generative shapes and animated patterns using MATLAB.</li>
+                <li>Includes scripts for spiral and circle‑arrangement animations.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Generative Art</span><span class="tag">Animation</span><span class="tag">MATLAB</span>
+              </div>
+              <div class="mini-canvas" data-kind="spiral" aria-hidden="true"></div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Project: ABODE -->
+        <article class="card col-12 reveal project" data-repo="ABODE">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>ABODE — Asymptotic Bode Plot Generator</strong>
+              <div class="muted">Combines MATLAB bode plot with asymptotes and a table of breakpoints.</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/ABODE" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Educational tool to visualize magnitude‑phase with asymptotic lines.</li>
+                <li>MIT‑licensed; beginner‑friendly.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Control</span><span class="tag">Bode</span><span class="tag">MATLAB</span>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Project: AnyMatBatch -->
+        <article class="card col-12 reveal project" data-repo="AnyMatBatch">
+          <header style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+            <div class="spark" aria-hidden="true"></div>
+            <div style="flex:1 1 auto">
+              <strong>AnyMatBatch — Batch Runner for AnyBody Models</strong>
+              <div class="muted">MATLAB‑based batch execution of AnyBody simulations with result collection.</div>
+            </div>
+            <div class="pill"><a href="https://github.com/rajanprasad460/AnyMatBatch" target="_blank" rel="noopener">GitHub ↗</a></div>
+          </header>
+          <details class="proj-details">
+            <summary>Read more</summary>
+            <div class="proj-body">
+              <ul class="clean muted">
+                <li>Alternative to AnyPy for batch model runs via MATLAB.</li>
+                <li>Includes demo analyzer and camera template.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">AnyBody</span><span class="tag">MATLAB</span><span class="tag">Batch</span>
+              </div>
+            </div>
+          </details>
+        </article>
+
       </div>
     </div>
   </section>
+  
+  <style>
+    /* Project details UI + little spark animation */
+    .proj-details{margin-top:.75rem}
+    .proj-details>summary{cursor:pointer; list-style:none; font-weight:700; padding:.5rem .75rem; border:1px solid var(--border); border-radius:10px; width:max-content; user-select:none}
+    .proj-details>summary::marker{display:none}
+    .proj-details[open] .proj-body{max-height:1000px; opacity:1}
+    .proj-body{max-height:0; overflow:hidden; opacity:0; transition:max-height .6s ease, opacity .6s ease; padding:.5rem 0}
+    .project{position:relative}
+    .spark{width:18px; height:18px; border-radius:50%; background:radial-gradient(circle, color-mix(in oklab, var(--accent) 90%, transparent) 0%, transparent 60%); filter:blur(1px); animation:twinkle 2.2s ease-in-out infinite;}
+    @keyframes twinkle{ 0%,100%{transform:translateY(0) scale(.9); opacity:.6} 50%{transform:translateY(-4px) scale(1.15); opacity:1} }
+    .mini-canvas{height:140px; border:1px dashed var(--border); border-radius:12px; margin-top:.75rem; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 96%, black 4%), color-mix(in oklab, var(--panel) 88%, black 12%)); position:relative}
+  </style>
+  
+  <script>
+    // Tiny animations for project cards: spiral + wheel drawn on demand when opened
+    (function(){
+      function drawSpiral(el){
+        if(el.__drawn) return; el.__drawn = true;
+        const cvs = document.createElement('canvas'); el.appendChild(cvs);
+        const ctx = cvs.getContext('2d');
+        function size(){ cvs.width = el.clientWidth * devicePixelRatio; cvs.height = el.clientHeight * devicePixelRatio; }
+        size();
+        const cx = ()=>cvs.width/2, cy = ()=>cvs.height/2; let t=0;
+        function tick(){
+          ctx.clearRect(0,0,cvs.width,cvs.height);
+          ctx.save(); ctx.translate(cx(), cy());
+          ctx.beginPath();
+          let a = 0; const max = 1100; const k = 0.06;
+          for(let i=0;i<max;i++){
+            const r = k * a; const x = r * Math.cos(a); const y = r * Math.sin(a);
+            if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+            a += 0.15 + 0.02*Math.sin(t*0.02);
+          }
+          ctx.lineWidth = 2*devicePixelRatio;
+          const c = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+          ctx.strokeStyle = c; ctx.stroke(); ctx.restore(); t++; requestAnimationFrame(tick);
+        }
+        tick();
+        new ResizeObserver(size).observe(el);
+      }
+      function drawWheel(el){
+        if(el.__drawn) return; el.__drawn = true; const cvs=document.createElement('canvas'); el.appendChild(cvs); const ctx=cvs.getContext('2d');
+        function size(){ cvs.width = el.clientWidth * devicePixelRatio; cvs.height = el.clientHeight * devicePixelRatio; }
+        size();
+        let angle=0; const spokes=8; const R=()=>Math.min(cvs.width,cvs.height)*0.35;
+        function tick(){
+          ctx.clearRect(0,0,cvs.width,cvs.height);
+          ctx.save(); ctx.translate(cvs.width/2, cvs.height*0.7);
+          // ground
+          ctx.beginPath(); ctx.moveTo(-cvs.width,0); ctx.lineTo(cvs.width,0); ctx.lineWidth=2*devicePixelRatio; ctx.strokeStyle='rgba(127,127,127,.4)'; ctx.stroke();
+          // wheel
+          ctx.translate(-cvs.width*0.3, -R());
+          ctx.beginPath(); ctx.arc(0,0,R(),0,Math.PI*2);
+          ctx.lineWidth=2*devicePixelRatio; ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent2'); ctx.stroke();
+          for(let i=0;i<spokes;i++){
+            const a = angle + i*(Math.PI*2/spokes);
+            ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(R()*Math.cos(a), R()*Math.sin(a)); ctx.stroke();
+          }
+          ctx.restore(); angle += 0.02; requestAnimationFrame(tick);
+        }
+        tick(); new ResizeObserver(size).observe(el);
+      }
+      document.querySelectorAll('.proj-details').forEach(d=>{
+        d.addEventListener('toggle', ()=>{
+          if(d.open){
+            const mc = d.querySelector('.mini-canvas');
+            if(mc){ const kind = mc.getAttribute('data-kind'); if(kind==='spiral') drawSpiral(mc); if(kind==='wheel') drawWheel(mc); }
+          }
+        });
+      });
+    })();
+  </script>
 
   <section id="skills">
     <div class="wrap">
@@ -348,6 +596,23 @@
   </footer>
 
   <script>
+    // --- Theme: initial load (system preference or saved), toggle, and persist ---
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      const theme = saved || (prefersLight ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+      const btn = document.getElementById('themeToggle');
+      const setLabel = () => btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '🌙 Theme' : '☀️ Theme';
+      setLabel();
+      btn.addEventListener('click', () => {
+        const now = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', now);
+        localStorage.setItem('theme', now);
+        setLabel();
+      });
+    })();
+
     // Scroll reveal
     const io = new IntersectionObserver((entries)=>{
       for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} }
@@ -362,13 +627,9 @@
     resize(); addEventListener('resize', resize);
 
     const N = 140; // stars
-    const stars = Array.from({length:N}, ()=>({
-      x: Math.random()*W,
-      y: Math.random()*H,
-      z: Math.random()*0.8 + 0.2,
-      vx: (Math.random()-.5)*0.06,
-      vy: (Math.random()-.5)*0.06,
-    }));
+    const stars = Array.from({length:N}, ()=>(
+      { x: Math.random()*W, y: Math.random()*H, z: Math.random()*0.8 + 0.2, vx: (Math.random()-.5)*0.06, vy: (Math.random()-.5)*0.06 }
+    ));
 
     function tick(){
       ctx.clearRect(0,0,W,H);
@@ -378,8 +639,10 @@
         const r = (1.2 + s.z*1.6) * DPR;
         ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI*2);
         const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r*3);
-        g.addColorStop(0, 'rgba(124,250,168,.95)');
-        g.addColorStop(1, 'rgba(109,207,246,0)');
+        const a1 = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+        const a2 = getComputedStyle(document.documentElement).getPropertyValue('--accent2').trim();
+        g.addColorStop(0, a2.replace(')', ', .95)').replace('rgb', 'rgba'));
+        g.addColorStop(1, a1.replace(')', ', 0)').replace('rgb', 'rgba'));
         ctx.fillStyle = g; ctx.fill();
       }
       requestAnimationFrame(tick);
@@ -388,6 +651,14 @@
 
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Ensure profile photo always shows a graceful fallback if missing
+    const img = document.getElementById('headshot');
+    img.addEventListener('error', ()=>{
+      const figure = document.getElementById('portrait');
+      figure.setAttribute('data-missing','');
+      img.remove();
+    });
   </script>
 </body>
 </html>
